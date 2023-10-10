@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-wnBE+rBsXu2zvqClQzS1A+HL3TDUpVta+zC47Qldgb+YP67Hv8iQ17FvHMVXl7kucvVrF+AHlYbJpmFV9yTrA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Patient Details</title>
+  <style>
+    /* Navbar style */
+    .navbar {
+      background-color: #333;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      flex-direction: column;
+      width: 200px;
+      color: white;
+      height: 100%;
+    }
+
+    .navbar-nav {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-link {
+      padding: 0.5rem 1rem;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #0056b3;
+    }
+
+    .navbar-toggler {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: white; /* Set the color of the hamburger icon */
+      background-color: transparent; /* Remove background color */
+      border: none; /* Remove border */
+      outline: none; /* Remove outline */
+      cursor: pointer;
+    }
+
+    .navbar-toggler-icon {
+      width: 30px; /* Adjust the width of the icon */
+      height: 3px; /* Adjust the height of the lines */
+      background-color: white; /* Set the color of the lines */
+      display: block;
+      position: relative;
+      margin-top: 5px; /* Adjust the spacing between the lines */
+    }
+
+    /* Table style */
+    .content-container {
+      margin-left: 220px;
+      padding: 30px;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    .table {
+      min-width: 800px;
+      border-collapse: collapse;
+    }
+
+    .table th,
+    .table td {
+      padding: 12px 15px;
+      text-align: center;
+    }
+
+    .table thead th {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .table tbody tr:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+
+    .table tbody tr:hover {
+      background-color: #d4d4d4;
+    }
+
+    .table img {
+      max-height: 100px;
+      width: auto;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 992px) {
+      .navbar {
+        width: 100%;
+        position: static;
+        padding-bottom: 10px;
+        height: auto;
+      }
+
+      .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .navbar-toggler {
+        margin-bottom: 0;
+      }
+
+      .content-container {
+        margin-left: 0;
+        padding: 15px;
+      }
+
+      .table {
+        min-width: auto;
+      }
+
+      .table img {
+        max-height: 80px;
+      }
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+      position: absolute;
+      bottom: 10;
+      left: 0;
+      width: 100%;
+    }
+
+    footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'addDoc' %}"><i class="fas fa-user-md"></i> Add Doctor</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'addDep' %}"><i class="fas fa-hospital"></i> Add Department</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'addRoom' %}"><i class="fas fa-bed"></i> Add Room</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'pending_appointments' %}"><i class="fas fa-calendar-alt"></i> Appointments</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'showDoc' %}"><i class="fas fa-chart-line"></i> Show Doctors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'adminbill' %}"><i class="fas fa-chart-line"></i> Billdetails</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'showP' %}"><i class="fas fa-chart-line"></i> Show Patients</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'user_logout' %}"><i class="fas fa-chart-line"></i> Logout</a>
+            </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content-container">
+    <h1 class="text-center text-danger">Patient Details</h1>
+    <div class="table-responsive">
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                    <th>Address</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Contact No</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in users %}
+                <tr>
+                    <td>{{ s.user.first_name }}</td>
+                    <td>{{ s.user.last_name }}</td>
+                    <td>{{ s.user.username }}</td>
+                    <td>{{ s.address }}</td>
+                    <td>{{ s.age }}</td>
+                    <td>{{ s.user.email }}</td>
+                    <td>{{ s.number }}</td>
+                    <td>
+                        <img src="{{ s.image.url }}" alt="">
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2023 We-Care Hospital & Research Centre. All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Details</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add your custom CSS styles -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .navbar {
+            background-color: #333;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            flex-direction: column;
+            width: 200px;
+            color: white;
+            height: 100%;
+        }
+
+        .navbar-nav {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar-toggler {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: white; /* Set the color of the hamburger icon */
+            background-color: transparent; /* Remove background color */
+            border: none; /* Remove border */
+            outline: none; /* Remove outline */
+            cursor: pointer;
+        }
+
+        .navbar-toggler-icon {
+            width: 30px; /* Adjust the width of the icon */
+            height: 3px; /* Adjust the height of the lines */
+            background-color: white; /* Set the color of the lines */
+            display: block;
+            position: relative;
+            margin-top: 5px; /* Adjust the spacing between the lines */
+        }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .card {
+                width: 90%;
+
+            }
+            .navbar {
+                width: 100%;
+                position: static;
+                padding-bottom: 10px;
+                height: auto;
+            }
+
+            .navbar-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 20px; 
+            }
+
+            .navbar-toggler {
+                margin-bottom: 0;
+            }
+
+            .container {
+                margin-left: 0;
+            }
+        }
+
+        .table-container {
+            margin: 30px auto;
+            max-width: 800px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: 80px; 
+        }
+
+        .table th {
+            text-transform: capitalize;
+        }
+
+        .text-warning {
+            color: #ff9800;
+        }
+
+        .text-success {
+            color: #4caf50;
+        }
+
+        .text-danger {
+            color: #f44336;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}"><i class="fas fa-user-md"></i> My Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'showda' %}"><i class="fas fa-hospital"></i> Doctors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'showroom' %}"><i class="fas fa-bed"></i> show Room</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'appointment' %}"><i class="fas fa-calendar-alt"></i>
+                        Appointments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'showstatus' %}"><i class="fas fa-chart-line"></i> Show
+                        status</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'userbill' %}"><i class="fas fa-chart-line"></i>Billdetails</a>
+                  </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'reset_password' %}"><i class="fas fa-chart-line"></i>Reset Password</a>
+                  </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user_logout' %}"><i class="fas fa-chart-line"></i>
+                        Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="table-container">
+            <h1>Appointment Details</h1>
+            <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Doctor Name</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appointment in appointments %}
+                    <tr>
+                        <td>{{ appointment.patient_name }}</td>
+                        <td>{{ appointment.doctor_name.name }}</td>
+                        <td>{{ appointment.date }}</td>
+                        <td>{{ appointment.description }}</td>
+                        <td>
+                            {% if appointment.status == 'PENDING' %}
+                                <span class="text-warning">Pending</span>
+                            {% elif appointment.status == 'APPROVED' %}
+                                <span class="text-success">Approved</span>
+                            {% elif appointment.status == 'REJECTED' %}
+                                <span class="text-danger">Rejected</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery scripts for any interactive elements -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

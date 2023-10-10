@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f0f2f5;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 5px;
+            margin-top: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        .container h1 {
+            color: #003049;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            color: #003049;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .form-control {
+            background-color: #f0f2f5;
+            color: #003049;
+            border: none;
+            border-radius: 5px;
+            border-bottom: 2px solid #003049;
+            box-shadow: none;
+        }
+
+        .form-control:focus {
+            background-color: #ffffff;
+            color: #003049;
+            outline: none;
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background-color: #003049;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        #k{
+            background-color: #070120;
+
+
+        }
+
+        .btn-primary:hover {
+            background-color: #001d33;
+        }
+
+        footer {
+            background-color: #003049;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #070120;">
+        <div class="container" id="k">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
+                <ul class="navbar-nav ml-md-auto"> <!-- Add ml-md-auto class here -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}"><i class="fas fa-user"></i> Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signin' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'aboutus' %}"><i class="fas fa-user-md"></i> About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contactus' %}"><i class="fas fa-hospital"></i> Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'depat' %}"><i class="fas fa-hospital"></i> Department</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    <div class="container">
+        <h1>LOG IN</h1>
+        {% for m in messages %}
+        {{m}}
+        {% endfor %}
+        <form action="{% url 'adminlog' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="student-name">Username</label>
+                <input type="text" class="form-control" name="name" id="student-name" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="student-address">Password</label>
+                <input type="password" class="form-control" name="psw" id="student-address" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{% url 'signup' %}">Don't have an account?</a>
+        </form>
+    </div>
+
+    <footer style="background-color: #333; color: #ffffff; text-align: center; padding: 1rem 0;">
+        <p>&copy; 2023 We-Care Hospital & Research Centre. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

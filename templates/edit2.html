@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        .container {
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            transition: all 0.3s ease-in-out;
+            transform-origin: bottom;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 style="text-align: center;">Edit Profile!</h1>
+
+<div class="container">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="student-name">First Name</label>
+            <input type="text"  value="{{u.user.first_name}}" class="form-control" name="fname" id="student-name" placeholder="Enter First name">
+            <div class="error-message" id="error-fname"></div> <!-- Error message container for first name -->
+        </div>
+        <div class="form-group">
+            <label for="student-address">Last Name</label>
+            <input type="text" value="{{u.user.last_name}}" class="form-control" name="lname" id="student-address" placeholder="Enter last name">
+            <div class="error-message" id="error-lname"></div> <!-- Error message container for last name -->
+        </div>
+        <div class="form-group">
+            <label for="student-age">Username</label>
+            <input type="text"  value="{{u.user.username}}" class="form-control" name="uname" id="student-age" placeholder="Enter username">
+            <div class="error-message" id="error-uname"></div> <!-- Error message container for username -->
+            
+        </div>
+       
+       
+        <div class="form-group">
+            <label for="joining-date">Address</label>
+            <input type="text"  value="{{u.address}}" class="form-control" id="joining-date" name="add" placeholder="Enter Address">
+        </div>
+        <div class="form-group">
+            <label for="joining-date">Age</label>
+            <input type="text" value="{{u.age}}" class="form-control" id="joining-date" name="age" placeholder="Enter age">
+        </div>
+        <div class="form-group">
+            <label for="joining-date">Email</label>
+            <input type="email" value="{{u.user.email}}" class="form-control" id="joining-date" name="email" placeholder="Enter email id">
+        </div>
+        <div class="form-group">
+            <label for="joining-date">Contact</label>
+            <input type="number" value="{{u.number}}" class="form-control" id="joining-date" name="number" placeholder="Enter mobile number">
+            <div class="error-message" id="error-uname"></div> <!-- Error message container for username -->
+        </div>
+        <div class="form-group">
+            <label for="joining-date">Upload your photo</label>
+            <input type="file" name="file" class="form-control form-control-lg" id="formFileLg" accept="image/*"  />
+            <td>
+                <img src="{{u.image.url}}" alt="">
+            </td>
+        </div>
+        <button type="submit" class="btn btn-warning">Edit</button>
+    </form>
+</div>

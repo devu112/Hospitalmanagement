@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - We-Care Hospital & Research Centre</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #160b3b;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: relative;
+            overflow: hidden;
+            background-color: #070120;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            padding-top: 20px;
+            background: linear-gradient(45deg, #FFC107, #F44336, #2196F3, #4CAF50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .navbar {
+            background-color: #08002a;
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-toggler-icon {
+            color: #0f0f0f;
+        }
+
+        .navbar-nav {
+            justify-content: flex-end;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-left: 20px;
+        }
+
+        .container {
+            color: #FFC107;
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #0c1037;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #FFC107;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .btn-send {
+            background-color: #0b0644;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-send:hover {
+            background-color: #00e2cf;
+        }
+
+        footer {
+            background-color: #333;
+            color: #dcdbe8;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}"><i class="fas fa-user"></i> Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signin' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'depat' %}">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'aboutus' %}">About Us</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'contactus' %}">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Contact Us - We-Care Hospital & Research Centre</h1>
+    </header>
+
+    <div class="container">
+        <div class="section-header">
+            <h2 style="color: #e1d018;">Get in Touch</h2>
+        </div>
+
+        <div class="contact-form">
+            <form>
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea class="form-control" id="message" rows="5" placeholder="Enter your message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-send">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h3>Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Find a Doctor</a></li>
+                        <li><a href="#">Book an Appointment</a></li>
+                        <li><a href="#">Make an Enquiry</a></li>
+                        <li><a href="#">Leave a Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h3>Hospitals</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Aster Wellness</a></li>
+                        <li><a href="#">Aster Volunteers</a></li>
+                        <li><a href="#">Aster Foundation</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h3>Aster Centres Of Excellence</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Cardiac Sciences</a></li>
+                        <li><a href="#">Neuro Sciences</a></li>
+                        <li><a href="#">Obstetrics and Gynaecology</a></li>
+                        <li><a href="#">Oncology</a></li>
+                        <li><a href="#">Orthopaedics</a></li>
+                        <li><a href="#">Paediatrics & Neonatology</a></li>
+                        <li><a href="#">Pulmonology & Critical Care</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center py-2">
+            <p>&copy; 2023 We-Care Hospital & Research Centre. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

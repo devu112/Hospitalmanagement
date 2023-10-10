@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WE-CARE Hospital - Departments</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #160b3b;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #070120;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            padding-top: 20px;
+            background: linear-gradient(45deg, #FFC107, #F44336, #2196F3, #4CAF50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 20px;
+        }
+
+        .department-card {
+            background-color: #95e3e7;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 2rem;
+            margin: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .department-card h3 {
+            color: #007BFF;
+        }
+
+        .department-card p {
+            color: #444;
+        }
+
+        /* Department Card Animation */
+        .department-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Background Animation */
+        .animation-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #FFC107, #F44336, #2196F3, #4CAF50);
+            background-size: 600% 600%;
+            animation: gradient 10s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 100%;
+            }
+
+            50% {
+                background-position: 100% 0%;
+            }
+
+            100% {
+                background-position: 0% 100%;
+            }
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #120042;
+            color: #e1d018;
+            text-align: center;
+            padding: 1rem 0;
+            position: absolute;
+            bottom: 10;
+            left: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .department-card {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}"><i class="fas fa-user"></i> Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signin' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'depat' %}">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'aboutus' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contactus' %}">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <h1>SERVICES - WE-CARE HOSPITAL & RESEARCH CENTER</h1>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <!-- Department Card - Neurology -->
+                <div class="col-md-4">
+                    <div class="department-card">
+                        <h3>Neurology</h3>
+                        <p>Our Neurology department specializes in diagnosing and treating disorders of the nervous system.
+                            Our team of neurologists provides expert care for conditions such as epilepsy, migraines,
+                            multiple sclerosis, and more.</p>
+                    </div>
+                </div>
+
+                <!-- Department Card - Urology -->
+                <div class="col-md-4">
+                    <div class="department-card">
+                        <h3>Urology</h3>
+                        <p>The Urology department at We-Care Hospital offers comprehensive urological services for both
+                            men and women. Our urologists are skilled in treating kidney stones, urinary tract infections,
+                            prostate issues, and other urological conditions.</p>
+                    </div>
+                </div>
+
+                <!-- Department Card - Gynecology -->
+                <div class="col-md-4">
+                    <div class="department-card">
+                        <h3>Gynecology</h3>
+                        <p>Our Gynecology department provides personalized care for women's reproductive health. From
+                            routine check-ups to specialized treatments, our gynecologists ensure the well-being of our
+                            female patients.</p>
+                    </div>
+                </div>
+
+                <!-- Add more department cards here -->
+
+                <div class="col-md-4">
+                    <div class="department-card">
+                        <h3>Cardiology</h3>
+                        <p>Our Cardiology department offers advanced cardiac care and treatments. Our team of cardiologists
+                            is dedicated to diagnosing and treating heart conditions, ensuring optimal heart health for
+                            our patients.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="department-card">
+                        <h3>Orthopedics</h3>
+                        <p>The Orthopedics department specializes in the diagnosis and treatment of musculoskeletal
+                            conditions and injuries. Our orthopedic surgeons provide comprehensive care for joint
+                            problems,
+                            fractures, and sports injuries.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="department-card">
+                        <h3>Pediatrics</h3>
+                        <p>Our Pediatrics department offers specialized care for infants, children, and adolescents. Our
+                            pediatricians provide preventive care, vaccinations, and treatment for various pediatric
+                            conditions to ensure the health and well-being of young patients.</p>
+                    </div>
+                </div>
+
+                <!-- Add more department cards here -->
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 We-Care Hospital. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

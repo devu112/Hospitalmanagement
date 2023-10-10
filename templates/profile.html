@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-wnBE+rBsXu2zvqClQzS1A+HL3TDUpVta+zC47Qldgb+YP67Hv8iQ17FvHMVXl7kucvVrF+AHlYbJpmFV9yTrA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Add Doctor</title>
+    <style>
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .navbar {
+            background-color: #333;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            flex-direction: column;
+            width: 200px;
+            color: white;
+            height: 100%;
+            transform: translateX(0);
+            /* Added to fix vertical navbar positioning */
+        }
+
+        .navbar-nav {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar-toggler {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: white;
+            /* Set the color of the hamburger icon */
+            background-color: transparent;
+            /* Remove background color */
+            border: none;
+            /* Remove border */
+            outline: none;
+            /* Remove outline */
+            cursor: pointer;
+        }
+
+        .navbar-toggler-icon {
+            width: 30px;
+            /* Adjust the width of the icon */
+            height: 3px;
+            /* Adjust the height of the lines */
+            background-color: white;
+            /* Set the color of the lines */
+            display: block;
+            position: relative;
+            margin-top: 5px;
+            /* Adjust the spacing between the lines */
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            /* Center the container horizontally */
+            margin-top: 80px;
+            /* Add some top margin to separate from navbar */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            width: 100%;
+        }
+
+        /* Add the below styles to handle responsiveness */
+        @media (max-width: 992px) {
+            .navbar {
+                width: 100%;
+                position: static;
+                padding-bottom: 10px;
+                height: auto;
+                transform: none;
+                /* Hide the vertical navbar on small screens */
+            }
+
+            .navbar-nav {
+                flex-direction: column;
+                /* Display nav items horizontally on small screens */
+            }
+
+            .navbar-toggler {
+                margin-bottom: 0;
+            }
+
+            .container {
+                padding: 15px;
+                /* Adjust padding for smaller screens */
+            }
+        }
+
+
+        .edit-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .edit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 992px) {
+            .main-content {
+                padding-top: 80px;
+                /* Add padding to separate the content from the fixed navbar */
+            }
+
+            .container {
+                max-width: 100%;
+                /* Adjust container width for smaller screens */
+                padding: 15px;
+                /* Adjust padding for smaller screens */
+            }
+
+            .profile-card {
+                padding: 20px;
+                /* Adjust padding for smaller screens */
+            }
+
+            .profile-card .profile-img {
+                max-width: 150px;
+                /* Adjust profile image size for smaller screens */
+            }
+
+            .profile-details p {
+                margin: 5px 0;
+                /* Adjust margin for smaller screens */
+            }
+
+            .edit-btn {
+                width: 100%;
+                /* Make the "Edit" button full width on smaller screens */
+                margin-top: 10px;
+                /* Add some space between the buttons */
+            }
+        }
+
+            footer {
+                background-color: #333;
+                color: #fff;
+                text-align: center;
+                padding: 0rem 0;
+                position: absolute;
+                bottom: 10;
+                left: 0;
+                width: 100%;
+            }
+
+            footer p {
+                margin: 0;
+            }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}"><i class="fas fa-user-md"></i> My Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'showda' %}"><i class="fas fa-hospital"></i> Doctors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'showroom' %}"><i class="fas fa-bed"></i> show Room</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'appointment' %}"><i class="fas fa-calendar-alt"></i>
+                        Appointments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'showstatus' %}"><i class="fas fa-chart-line"></i> Show status</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'userbill' %}"><i class="fas fa-chart-line"></i>BillDetails</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'reset_password' %}"><i class="fas fa-chart-line"></i>Reset
+                        Password</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user_logout' %}"><i class="fas fa-chart-line"></i> Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container py-5 main-content">
+        <div class="profile-card">
+            <div class="text-center">
+                <img src="{{ users.image.url }}" alt="Profile Image" class="profile-img">
+                <div class="profile-name">{{ users.user.username }}</div>
+                <div class="profile-email">Email Address: {{ users.user.email }}</div>
+            </div>
+            <div class="profile-details">
+                <h5>First Name:</h5>
+                <p>{{ users.user.first_name }}</p>
+                <h5>Last Name:</h5>
+                <p>{{ users.user.last_name }}</p>
+                <h5>Address:</h5>
+                <p>{{ users.address }}</p>
+                <h5>Age:</h5>
+                <p>{{ users.age }}</p>
+                <h5>Mobile Number:</h5>
+                <p>{{ users.number }}</p>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-warning edit-btn"><a href="{% url 'edit2' %}"
+                        style="color: #fff; text-decoration: none;">Edit</a></button>
+            </div>
+            <br>
+            <div>
+                <button type="submit" class="btn btn-success "><a href="{% url 'reset_password' %}"
+                        style="color: #fff; text-decoration: none;">Reset Password</a></button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-2">
+        <p>&copy; 2023 We-Care Hospital & Research Centre. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

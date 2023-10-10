@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - We-Care Hospital & Research Centre</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #160b3b;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: relative;
+            overflow: hidden;
+            background-color: #070120;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            padding-top: 20px;
+            background: linear-gradient(45deg, #FFC107, #F44336, #2196F3, #4CAF50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .navbar {
+            
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-toggler-icon {
+            color: #0f0f0f;
+        }
+
+        .navbar-nav {
+            justify-content: flex-end;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-left: 20px;
+        }
+
+        .jumbotron {
+            background-color: #070120;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .jumbotron h1 {
+            font-size: 3.5rem;
+        }
+
+        .container {
+            color: #FFC107;
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #0c1037;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-content {
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        .section-content img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #dcdbe8;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}"><i class="fas fa-user"></i> Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signin' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'depat' %}">Services</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'aboutus' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contactus' %}">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</head>
+
+<body>
+    <header>
+        <h1>About Us - We-Care Hospital & Research Centre</h1>
+    </header>
+
+    
+
+
+
+    <div class="container">
+        <div class="section-header">
+            <h2>Welcome to We-Care Hospital & Research Centre</h2>
+        </div>
+        <div class="section-content">
+            <p>We-Care Hospital & Research Centre is a leading healthcare provider dedicated to offering the best medical services to our patients. Our team of skilled and compassionate doctors and staff are committed to providing quality care and ensuring the well-being of our patients.</p>
+            <p>We take pride in our state-of-the-art facilities and cutting-edge technology, enabling us to deliver innovative treatments and personalized care to each patient. Our hospital is equipped to handle a wide range of medical conditions and offers specialized care in various departments.</p>
+            <img src="https://images.pexels.com/photos/247786/pexels-photo-247786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Hospital Image">
+            <p>At We-Care Hospital, we believe in a patient-centric approach, where the comfort and recovery of our patients are of utmost importance. We strive to create a warm and welcoming environment to alleviate any anxiety and provide a positive healing experience.</p>
+            <p>Our commitment to research and medical advancements allows us to stay at the forefront of healthcare practices. We continuously invest in the professional development of our staff and ensure that they are updated with the latest medical knowledge and skills.</p>
+            <p>Thank you for choosing We-Care Hospital & Research Centre. Your health and well-being are our priority, and we are here to provide you with the best care possible.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h3>Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Find a Doctor</a></li>
+                        <li><a href="#">Book an Appointment</a></li>
+                        <li><a href="#">Make an Enquiry</a></li>
+                        <li><a href="#">Leave a Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h3>Hospitals</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Aster Wellness</a></li>
+                        <li><a href="#">Aster Volunteers</a></li>
+                        <li><a href="#">Aster Foundation</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h3>Aster Centres Of Excellence</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Cardiac Sciences</a></li>
+                        <li><a href="#">Neuro Sciences</a></li>
+                        <li><a href="#">Obstetrics and Gynaecology</a></li>
+                        <li><a href="#">Oncology</a></li>
+                        <li><a href="#">Orthopaedics</a></li>
+                        <li><a href="#">Paediatrics & Neonatology</a></li>
+                        <li><a href="#">Pulmonology & Critical Care</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center py-2">
+            <p>&copy; 2023 We-Care Hospital & Research Centre. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

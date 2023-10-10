@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pending Appointments</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add your custom CSS styles -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .container {
+            margin-left: 220px;
+            padding-bottom: 60px;
+            /* Add padding to create space for the footer */
+        }
+
+
+        .table {
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .table thead th {
+            background-color: #007bff;
+            color: #fff;
+            text-transform: capitalize;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btn {
+            margin-right: 5px;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        /* Additional styles for the vertical navbar */
+        .navbar {
+            background-color: #333;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            flex-direction: column;
+            width: 200px;
+            color: white;
+            height: 100%;
+        }
+
+        .navbar-nav {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .nav-link {
+      padding: 0.5rem 1rem;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+        .navbar-toggler {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: white;
+            /* Set the color of the hamburger icon */
+            background-color: transparent;
+            /* Remove background color */
+            border: none;
+            /* Remove border */
+            outline: none;
+            /* Remove outline */
+            cursor: pointer;
+        }
+
+        .navbar-toggler-icon {
+            width: 30px;
+            /* Adjust the width of the icon */
+            height: 3px;
+            /* Adjust the height of the lines */
+            background-color: white;
+            /* Set the color of the lines */
+            display: block;
+            position: relative;
+            margin-top: 5px;
+            /* Adjust the spacing between the lines */
+        }
+
+        .container {
+            margin-left: 220px;
+        }
+
+        @media (max-width: 576px) {
+            .navbar {
+                width: 100%;
+                position: static;
+                padding-bottom: 10px;
+                height: auto;
+            }
+
+            .navbar-nav {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .navbar-toggler {
+                margin-bottom: 0;
+            }
+
+            .container {
+                margin-left: 0;
+            }
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: absolute;
+            /* Change from relative to absolute position */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Vertical Navbar -->
+    <nav class="navbar">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav">
+                <div class="navbar-nav flex-column">
+                    <a class="nav-link" href="{% url 'addDoc' %}">Add Doctor</a>
+                    <a class="nav-link" href="{% url 'addDep' %}">Add Department</a>
+                    <a class="nav-link" href="{% url 'addRoom' %}">Add Room</a>
+                    <a class="nav-link" href="{% url 'pending_appointments' %}">Appointments</a>
+                    <a class="nav-link" href="{% url 'showDoc' %}">Show Doctors</a>
+                    <a class="nav-link" href="{% url 'showP' %}">Patient Details</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'adminbill' %}"><i class="fas fa-chart-line"></i>
+                            Billdetails</a>
+                    </li>
+                    <a class="nav-link" href="{% url 'user_logout' %}">Logout</a>
+                </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Pending Appointments</h1>
+        <div class="table-responsive"> <!-- Add the div with table-responsive class -->
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Doctor Name</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appointment in appointments %}
+                    <tr>
+                        <td>{{ appointment.patient_name }}</td>
+                        <td>{{ appointment.doctor_name.name }}</td>
+                        <td>{{ appointment.date }}</td>
+                        <td>{{ appointment.description }}</td>
+                        <td>
+                            <a href="{% url 'approve_appointment' appointment.id %}" class="btn btn-success">Approve</a>
+                            <a href="{% url 'reject_appointment' appointment.id %}" class="btn btn-danger">Reject</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 We-Care Hospital & Research Centre. All rights reserved.</p>
+    </footer>
+    <!-- Add Bootstrap JS and jQuery scripts for any interactive elements -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

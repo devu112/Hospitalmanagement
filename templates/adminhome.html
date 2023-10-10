@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Home - We-Care Hospital</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        /* Adjust the navbar height and text color */
+        .navbar {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        /* Style the navbar links */
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Add custom styles for the main content */
+        .main-content {
+            background-color: #f7f7f7;
+            padding: 20px;
+            min-height: calc(100vh - 56px);
+        }
+
+        .footer {
+            background-color: #333;
+           color: #f7f7f7;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 10;
+            left: 0;
+            width: 100%;
+        }
+
+        .footer p {
+            margin: 5;
+        }
+
+        /* Additional styles for the vertical navbar */
+        .navbar {
+            background-color: #333;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            flex-direction: column;
+            width: 200px;
+            color: white;
+            height: 100%;
+        }
+
+        .navbar-nav {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar-toggler {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: white; /* Set the color of the hamburger icon */
+            background-color: transparent; /* Remove background color */
+            border: none; /* Remove border */
+            outline: none; /* Remove outline */
+            cursor: pointer;
+        }
+
+        .navbar-toggler-icon {
+            width: 30px; /* Adjust the width of the icon */
+            height: 3px; /* Adjust the height of the lines */
+            background-color: white; /* Set the color of the lines */
+            display: block;
+            position: relative;
+            margin-top: 5px; /* Adjust the spacing between the lines */
+        }
+
+        .container {
+            margin-left: 220px;
+            max-width: 600px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            width: 100%;
+        }
+
+        @media (max-width: 576px) {
+            .navbar {
+                width: 100%;
+                position: static;
+                padding-bottom: 10px;
+                height: auto;
+            }
+
+            .navbar-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar-toggler {
+                margin-bottom: 0;
+            }
+
+            .container {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Vertical Navbar -->
+    <nav class="navbar">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav">
+            <a class="nav-link" href="{% url 'addDoc' %}">Add Doctor</a>
+            <a class="nav-link" href="{% url 'addDep' %}">Add Department</a>
+            <a class="nav-link" href="{% url 'addRoom' %}">Add Room</a>
+            <a class="nav-link" href="{% url 'pending_appointments' %}">Appointments</a>
+            <a class="nav-link" href="{% url 'showDoc' %}">Show Doctors</a>
+            <a class="nav-link" href="{% url 'showP' %}">Patient Details</a>
+            <a class="nav-link" href="{% url 'user_logout' %}">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <img src="" alt="">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <h1 class="mt-4">Welcome to We-Care Hospital</h1>
+                    <p class="lead">We provide the best healthcare services for you.</p>
+                    <p>Please use the links in the sidebar to access various features.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <footer class="footer">
+        <div>
+            <p>&copy; 2023 We-Care Hospital & Research Centre. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
